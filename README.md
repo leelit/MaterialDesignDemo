@@ -15,4 +15,4 @@
 
 ###**ScreenShot**
 
-[demo.gif](https://github.com/leelit/MaterialDesignDemo/blob/master/demo.gif?raw=true)
+![demo.gif](https://github.com/leelit/MaterialDesignDemo/blob/master/demo.gif?raw=true)
