@@ -1,7 +1,9 @@
 package com.leelit.materialdesigndemo;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView mNavigationView;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
         // initTab();
         initTabWithViewPager();
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CollapsingToolbarActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initTabWithViewPager() {
@@ -72,14 +83,14 @@ public class MainActivity extends AppCompatActivity {
         });
         mViewPager.setOffscreenPageLimit(fragments.size());
         mTabLayout.setupWithViewPager(mViewPager);
-        // 如果需要icon
+        // if need icon
         for (int i = 0; i < fragments.size(); i++) {
             mTabLayout.getTabAt(i).setIcon(R.drawable.ic_fa_android);
         }
     }
 
     private void initTab() {
-        // mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE); // tab数量超过一屏
+        // mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE); // more than one screen
         mTabLayout.addTab(mTabLayout.newTab().setText("Tab1").setIcon(R.drawable.ic_fa_android));
         mTabLayout.addTab(mTabLayout.newTab().setText("Tab2").setIcon(R.drawable.ic_fa_android));
         mTabLayout.addTab(mTabLayout.newTab().setText("Tab3").setIcon(R.drawable.ic_fa_android));
@@ -135,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView = (NavigationView) findViewById(R.id.navigationView);
         mTabLayout = (TabLayout) findViewById(R.id.tabLayout);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
+        fab = (FloatingActionButton) findViewById(R.id.fabBtn);
     }
 
     @Override
